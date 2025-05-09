@@ -1,0 +1,8 @@
+from nodes.models import Node
+
+Node.objects.create(
+    display_name="Gate Camera 1",
+    location_name="Main Gate",
+    ip_address="192.168.1.10",
+    status="active"
+)

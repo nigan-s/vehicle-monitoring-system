@@ -37,6 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'vehicle',
+    'nodes',
+    'accounts',
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -47,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'vms.urls'
@@ -68,6 +75,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'vms.wsgi.application'
 
+AUTH_USER_MODEL = 'accounts.Accounts'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
@@ -75,8 +83,26 @@ WSGI_APPLICATION = 'vms.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'vms',
+        'USER': 'django',
+        'PASSWORD': 'django123',
+        'HOST': 'localhost',  # e.g., 'localhost' or AWS RDS endpoint
+        'PORT': '5432',  # Default PostgreSQL port
     }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
+
+SIMPLE_JWT = {
+    'USER_ID_FIELD': 'account_id',
+    'USER_ID_CLAIM': 'user_id',
 }
 
 
@@ -120,3 +146,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOW_ALL_ORIGINS = True 

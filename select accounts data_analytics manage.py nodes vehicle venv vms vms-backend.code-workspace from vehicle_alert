@@ -1,0 +1,19 @@
+                      List of relations
+ Schema |                Name                | Type  | Owner  
+--------+------------------------------------+-------+--------
+ public | accounts_accounts                  | table | django
+ public | accounts_accounts_groups           | table | django
+ public | accounts_accounts_user_permissions | table | django
+ public | auth_group                         | table | django
+ public | auth_group_permissions             | table | django
+ public | auth_permission                    | table | django
+ public | django_admin_log                   | table | django
+ public | django_content_type                | table | django
+ public | django_migrations                  | table | django
+ public | django_session                     | table | django
+ public | nodes_node                         | table | django
+ public | vehicle_alert                      | table | django
+ public | vehicle_vehicle                    | table | django
+ public | vehicle_vehicleentry               | table | django
+(14 rows)
+
